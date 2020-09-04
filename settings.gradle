@@ -1,0 +1,2 @@
+rootProject.name='amrita_placements'
+include ':app'
