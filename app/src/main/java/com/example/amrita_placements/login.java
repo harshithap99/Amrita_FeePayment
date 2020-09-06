@@ -13,13 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.Collator;
 
 public class login extends AppCompatActivity {
-    Button login_btn;
+    Button login_bt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
 
-        login_btn.setOnClickListener(new View.OnClickListener() {
+        login_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
