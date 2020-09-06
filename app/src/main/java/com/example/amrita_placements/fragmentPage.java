@@ -61,7 +61,7 @@ public class fragmentPage extends AppCompatActivity {
             }
         });
 
-        viewPager.addOnPageChangeListener((new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.addOnPageChangeListener((new TabLayout.TabLayoutOnPageChangeListener(tabLayout)));
 
 
     }
