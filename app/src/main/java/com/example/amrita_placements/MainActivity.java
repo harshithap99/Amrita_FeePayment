@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cir_fragment);
+        setContentView(R.layout.login);
         String s = "HarshiSucksButGeorgeisAwesomeTHO";
     } @Override
     public boolean onCreateOptionsMenu(Menu menu) {

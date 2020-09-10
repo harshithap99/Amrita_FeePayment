@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "647202575435",
+    "firebase_url": "https://helpgethired-fb878.firebaseio.com",
+    "project_id": "helpgethired-fb878",
+    "storage_bucket": "helpgethired-fb878.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647202575435:android:ab4c73838d6d6431e0e9ce",
+        "android_client_info": {
+          "package_name": "com.HGH.HelpGettingHired"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647202575435-v8jbatnk68g0ao0fjf144hhdbaqv7sbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpn4NKw1yKu4e7LvfZ7VoQHUhW8E672Pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647202575435-v8jbatnk68g0ao0fjf144hhdbaqv7sbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
