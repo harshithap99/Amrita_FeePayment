@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="-20dp"
+        android:layout_marginBottom="-10dp"
         android:fontFamily="sans-serif-medium"
         android:text="Login"
         android:textColor="#FFFFFF"
@@ -50,38 +50,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remember Me"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="0dp"
-            android:textColor="@color/white"
-            android:buttonTint="@color/white"
-            android:checked="true"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Forget Password"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="0dp"
-            android:textColor="@color/white"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:drawableLeft="@drawable/ic_baseline_lock_open_24"
             android:drawablePadding="6dp"
-            android:padding="4dp"/>
+            android:padding="4dp"
+            android:text="Forgot Password?"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
 
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="10dp"
@@ -112,7 +103,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="10dp"
