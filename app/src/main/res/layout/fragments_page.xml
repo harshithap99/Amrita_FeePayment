@@ -17,7 +17,7 @@
             android:id="@+id/Tab1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All Links" />
+            android:text="Courses" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/Tab2"
@@ -29,7 +29,7 @@
             android:id="@+id/Tab3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Resources" />
+            android:text="Banking" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

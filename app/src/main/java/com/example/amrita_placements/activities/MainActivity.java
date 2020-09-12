@@ -1,13 +1,15 @@
-package com.example.amrita_placements;
+package com.example.amrita_placements.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.amrita_placements.R;
+import com.example.amrita_placements.activities.login;
 
 public class MainActivity extends AppCompatActivity {
 

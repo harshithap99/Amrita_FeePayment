@@ -1,30 +1,30 @@
-package com.example.amrita_placements;
+package com.example.amrita_placements.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
+import com.example.amrita_placements.adapters.PageAdapter;
+import com.example.amrita_placements.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class fragmentPageCir extends AppCompatActivity {
+public class fragmentPage extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private TabItem tab1c,tab2c;
+    private TabItem tab1,tab2,tab3;
     public PageAdapter pageradapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cir_fragment);
+        setContentView(R.layout.fragments_page);
 
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        tab1c = (TabItem) findViewById(R.id.Tab1);
-        tab2c = (TabItem) findViewById(R.id.Tab2);
+        tab1 = (TabItem) findViewById(R.id.Tab1);
+        tab2 = (TabItem) findViewById(R.id.Tab2);
+        tab3 = (TabItem) findViewById(R.id.Tab3);
 
         viewPager = findViewById(R.id.viewpager);
 
@@ -40,6 +40,10 @@ public class fragmentPageCir extends AppCompatActivity {
                     pageradapter.notifyDataSetChanged();
                 }
                 else if(tab.getPosition()==1)
+                {
+                    pageradapter.notifyDataSetChanged();
+                }
+                else if(tab.getPosition()==2)
                 {
                     pageradapter.notifyDataSetChanged();
                 }
@@ -61,4 +65,3 @@ public class fragmentPageCir extends AppCompatActivity {
 
     }
 }
-

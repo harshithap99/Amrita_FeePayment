@@ -1,9 +1,13 @@
-package com.example.amrita_placements;
+package com.example.amrita_placements.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.amrita_placements.fragments.Tab1;
+import com.example.amrita_placements.fragments.Tab2;
+import com.example.amrita_placements.fragments.Tab3;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
