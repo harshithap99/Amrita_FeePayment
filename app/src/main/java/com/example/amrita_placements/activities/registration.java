@@ -58,7 +58,7 @@ public class registration extends AppCompatActivity {
                         final String reg_num = registration_number.getText().toString();
 
                         if (TextUtils.isEmpty(reg_num)) {
-                            email.setError("Registration number is required");
+                            registration_number.setError("Registration number is required");
                             return;
                         }
                         if (!password.equals(conf_pass)) {
