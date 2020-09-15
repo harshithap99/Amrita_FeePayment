@@ -15,9 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
 
-        android:text="FEEPAY"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bowlby_one"
+        android:text="FeePay"
         android:textColor="#FFF"
-        android:textSize="30dp" />
+        android:textSize="36sp" />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -30,13 +32,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="#000000"
-            android:layout_margin="12dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_gravity="fill"
+            android:layout_margin="12dp"
+            android:background="#000000"
 
 
             app:cardBackgroundColor="#000000"
@@ -49,6 +51,12 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:gravity="center"
                 android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+
+                    app:srcCompat="@drawable/ic_baseline_location_city_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -85,6 +93,12 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+
+                    app:srcCompat="@drawable/ic_baseline_local_hotel_24" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,12 +132,20 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+
+                    app:srcCompat="@drawable/ic_baseline_local_cafe_24" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="CANTEEN DUES"
                     android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -151,9 +173,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_person_24" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_directions_bus_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -161,6 +183,8 @@
                     android:gravity="center_horizontal"
                     android:text="BUS FEES"
                     android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -187,9 +211,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_person_24" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_colorize_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -197,6 +221,8 @@
                     android:gravity="center_horizontal"
                     android:text="LAB FINES"
                     android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -223,9 +249,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_person_24" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_attach_money_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -233,6 +259,8 @@
                     android:gravity="center_horizontal"
                     android:text="GENERAL FINES"
                     android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -259,9 +287,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_person_24" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_menu_book_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -269,6 +297,8 @@
                     android:gravity="center_horizontal"
                     android:text="LIBRARY DUES"
                     android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -295,16 +325,18 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_person_24" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_local_dining_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="TUTION FEES"
+                    android:text="MESS FEES"
                     android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
