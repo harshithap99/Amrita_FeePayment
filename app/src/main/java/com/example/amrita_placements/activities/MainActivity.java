@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void A()
     {
 
-        Intent intent = new Intent(this, registration.class);
+        Intent intent = new Intent(this, verify_reg_number.class);
         startActivity(intent);
     }
 }

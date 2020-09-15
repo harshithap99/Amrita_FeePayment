@@ -27,7 +27,7 @@
         android:layout_below="@+id/title_view"
         android:columnCount="2"
         android:padding="10dp"
-        android:rowCount="4">
+        android:rowCount="10">
 
         <androidx.cardview.widget.CardView
             android:layout_width="100dp"
