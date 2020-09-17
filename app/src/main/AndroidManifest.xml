@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.example.amrita_placements.activities.registration" />
         <activity android:name="com.example.amrita_placements.activities.login" />
         <activity android:name="com.example.amrita_placements.activities.verify_reg_number" />
         <activity android:name=".activities.MainActivity">

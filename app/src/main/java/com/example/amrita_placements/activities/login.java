@@ -7,16 +7,22 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.auth.FirebaseUser;
+
+
 import com.example.amrita_placements.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.Collator;
@@ -26,14 +32,14 @@ public class login extends AppCompatActivity {
     EditText reg_num;
     EditText password;
     FirebaseAuth mAuth;
-
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration);
+        setContentView(R.layout.login_test);
         findViews();
-        login_btn = findViewById(R.id.loginbutton);
-        mAuth = FirebaseAuth.getInstance();
+        login_btn = findViewById(R.id.login_id);
+      //  mAuth = FirebaseAuth.getInstance();
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,17 +53,9 @@ public class login extends AppCompatActivity {
                     password.setError("password.is.empty");
                     return;
                 }
-                mAuth.signInWithEmailAndPassword(user_reg_number, pass_word).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(getApplicationContext(), fragmentPage.class));
-                            finish();
-                        } else {
-                            Toast.makeText(login.this, "error:" + task.getException(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+
+                DocumentReference documentref = FirebaseFirestore.getInstance().collection("students").document(user_reg_number);
+
             }
         });
     }
@@ -65,6 +63,5 @@ public class login extends AppCompatActivity {
     {
             reg_num = findViewById(R.id.email);
             password = findViewById(R.id.password);
-            login_btn = findViewById(R.id.button);
         }
 }
