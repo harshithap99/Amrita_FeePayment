@@ -1,5 +1,6 @@
 package com.example.amrita_placements.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -19,4 +20,10 @@ public class verify_reg_number extends AppCompatActivity {
 
     }
 
+    public void jj()
+    {
+
+        Intent intent = new Intent(this, paypage.class);
+        startActivity(intent);
+    }
 }
