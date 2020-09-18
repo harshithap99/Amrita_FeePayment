@@ -46,6 +46,7 @@
 
             <!-- Column 1 -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/tutionfees"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_rowWeight="1"
@@ -88,6 +89,7 @@
 
             <!-- Column 2 -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/hostelfees"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_rowWeight="1"
@@ -132,6 +134,7 @@
 
             <!-- Column 1 -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/canteendues"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_rowWeight="1"
@@ -174,6 +177,7 @@
 
             <!-- Column 2 -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/busfees"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_rowWeight="1"
@@ -218,6 +222,7 @@
 
             <!-- Column 1 -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/labfines"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_rowWeight="1"
@@ -259,6 +264,7 @@
 
             <!-- Column 2 -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/generalfines"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_rowWeight="1"
@@ -299,6 +305,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/libraryfines"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_rowWeight="1"
@@ -339,6 +346,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/messfees"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_rowWeight="1"
