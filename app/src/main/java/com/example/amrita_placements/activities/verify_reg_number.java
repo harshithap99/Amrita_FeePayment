@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -26,7 +27,9 @@ public class verify_reg_number extends AppCompatActivity {
         CardView lab_fines = findViewById(R.id.labfines);
         CardView canteen_dues = findViewById(R.id.canteendues);
         CardView other_fees = findViewById(R.id.generalfines);
-
+      //  public void tutionfees(View view) {
+       //     Toast.makeText(this, "You have clicked P1", Toast.LENGTH_LONG).show();
+      //  }
         hostel_fees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

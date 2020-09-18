@@ -56,7 +56,9 @@
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                android:clickable="true">
+               <!-- android:onClick="tutionfees"-->
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -99,7 +101,8 @@
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                android:clickable="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -145,7 +148,8 @@
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                android:clickable="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -188,7 +192,8 @@
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                android:clickable="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -233,7 +238,8 @@
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                android:clickable="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -275,7 +281,8 @@
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                android:clickable="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -316,7 +323,8 @@
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                android:clickable="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -357,7 +365,8 @@
                 android:layout_marginBottom="12dp"
                 app:cardBackgroundColor="#000"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                android:clickable="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
