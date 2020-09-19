@@ -18,7 +18,7 @@ public class verify_reg_number extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.homepage1);
+        setContentView(R.layout.hostelfees);
         CardView hostel_fees = findViewById(R.id.hostelfees);
         CardView bus_fees = findViewById(R.id.busfees);
         CardView tuition_fees = findViewById(R.id.tutionfees);

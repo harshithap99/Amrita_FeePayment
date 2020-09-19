@@ -90,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void A()
     {
-
+        // George check this
         Intent intent = new Intent(this, verify_reg_number.class);
+        //Intent intent = new Intent(this, verification.class); if i give this the app is getting closed
         startActivity(intent);
     }
     void findViews()
