@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name="com.example.amrita_placements.activities.verify_reg_number" />
+        <activity android:name="com.example.amrita_placements.activities.verification" />
         <activity android:name=".activities.MainActivity">
 
             <intent-filter>
