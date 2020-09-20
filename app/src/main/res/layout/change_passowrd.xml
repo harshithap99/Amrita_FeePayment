@@ -31,7 +31,7 @@
                 android:layout_marginBottom="-27dp"
                 android:fontFamily="@font/bowlby_one"
                 android:gravity="center"
-                android:text="CHANGE PASSOWRD"
+                android:text="CHANGE PASSWORD"
                 android:textColor="#FFFFFF"
                 android:textSize="45sp" />
 
@@ -70,7 +70,7 @@
             android:background="@drawable/shapeemail"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:drawablePadding="10dp"
-            android:hint="enter new passowrd"
+            android:hint="Enter your password"
             android:padding="15dp"
             android:textColor="@android:color/black"
             android:textColorHighlight="@android:color/black"
@@ -88,7 +88,7 @@
             android:background="@drawable/shapeemail"
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:drawablePadding="10dp"
-            android:hint="confirm_Password"
+            android:hint="Confirm Password"
             android:padding="15dp"
             android:textColor="@android:color/black"
             android:textColorHighlight="@android:color/black"
@@ -106,7 +106,7 @@
             android:background="@drawable/shapelogin"
             android:padding="0dp"
             android:shadowColor="@android:color/transparent"
-            android:text="Change Passowrd"
+            android:text="Change Password"
             android:textColor="#FFFFFF"
             android:textSize="25sp" />
 
