@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="TextView"
+            android:text="Submitted"
             android:textColor="#F853A8"
             android:textSize="36sp"
             tools:text="Submitted" />
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="TextView"
+            android:text="Successfully!"
             android:textColor="#F853A8"
             android:textSize="36sp"
             tools:text="Successfully!" />
