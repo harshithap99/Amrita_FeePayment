@@ -49,25 +49,6 @@
             android:background="#F853A8" />
 
         <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/shapeemail"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:drawablePadding="10dp"
-            android:hint="Enter the amount"
-            android:padding="15dp"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="@android:color/black"
-            android:textColorHint="@android:color/black"
-            android:textSize="14sp" />
-
-        <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
