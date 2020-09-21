@@ -34,7 +34,7 @@
                 android:layout_marginBottom="40dp"
                 android:fontFamily="monospace"
                 android:gravity="center"
-                android:text="confirm with your old password"
+                android:text="Confirm with your old password"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
 
