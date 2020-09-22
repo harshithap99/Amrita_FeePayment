@@ -353,7 +353,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:text="GENERAL FINES"
+                        android:text="GENERAL FEES"
                         android:textAlignment="center"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"

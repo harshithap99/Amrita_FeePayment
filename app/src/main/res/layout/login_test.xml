@@ -70,7 +70,7 @@
             android:background="@drawable/shapeemail"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:drawablePadding="10dp"
-            android:hint="Email"
+            android:hint="Registration Number"
             android:padding="15dp"
             android:textColor="@android:color/black"
             android:textColorHighlight="@android:color/black"
