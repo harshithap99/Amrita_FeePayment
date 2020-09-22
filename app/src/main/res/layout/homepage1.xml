@@ -14,43 +14,27 @@
         android:background="#000000"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="2"
+            android:layout_weight="0"
             android:background="#000000"
-            android:orientation="horizontal">
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/pinkperson" />
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/actor"
-                android:text="Welcome Harshi!"
-                android:textColor="#EFEFEF"
-                android:textSize="24sp" />
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-                android:background="#000000"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@drawable/pinkperson" />
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-                android:background="#000000"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/logout" />
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="-50dp"
+            android:layout_marginRight="10dp"
+            android:background="#000000"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/logout" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -353,7 +337,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:text="GENERAL FINES"
+                        android:text="OTHER FEES"
                         android:textAlignment="center"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"

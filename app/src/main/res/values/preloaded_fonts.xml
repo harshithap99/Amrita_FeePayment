@@ -3,8 +3,11 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/actor</item>
         <item>@font/allan</item>
+        <item>@font/allerta</item>
         <item>@font/allura</item>
+        <item>@font/amiri</item>
         <item>@font/archivo_black</item>
+        <item>@font/asap</item>
         <item>@font/bangers</item>
         <item>@font/bowlby_one</item>
         <item>@font/caveat_brush</item>

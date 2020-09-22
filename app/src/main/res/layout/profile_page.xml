@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shapelogin"
+        android:padding="0dp"
+        android:shadowColor="@android:color/transparent"
+        android:text="View Receipts"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.145" />
+
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="50dp"
@@ -35,15 +52,15 @@
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="30dp"
+                android:layout_height="150dp"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/pinkperson" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/caveat_brush"
+                android:fontFamily="@font/asap"
                 android:gravity="center"
                 android:text="Harshitha R"
                 android:textColor="#FFFFFF"
@@ -53,7 +70,7 @@
                 android:id="@+id/textView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/caveat_brush"
+                android:fontFamily="@font/asap"
                 android:gravity="center"
                 android:text="CSE"
                 android:textColor="#FFFFFF"
@@ -63,7 +80,7 @@
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/caveat_brush"
+                android:fontFamily="@font/asap"
                 android:gravity="center"
                 android:text="2017-2021"
                 android:textColor="#FFFFFF"
@@ -73,7 +90,7 @@
                 android:id="@+id/textView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/caveat_brush"
+                android:fontFamily="@font/asap"
                 android:gravity="center"
                 android:text="BL.EN.U4CSE17045"
                 android:textColor="#FFFFFF"
@@ -83,9 +100,19 @@
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/caveat_brush"
+                android:fontFamily="@font/asap"
                 android:gravity="center"
                 android:text="Day Scholar"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/asap"
+                android:gravity="center"
+                android:text="achooli123@gmail.com"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp" />
 
@@ -95,8 +122,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="233dp"
-        android:layout_height="69dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="28dp"
         android:background="@drawable/shapelogin"
@@ -108,6 +135,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
