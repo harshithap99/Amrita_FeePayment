@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,17 +30,19 @@ public class MainActivity extends AppCompatActivity {
     EditText reg_num;
     EditText password;
     FirebaseAuth fAuth;
+
     private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.login_test);
         db = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         findViews();
         loginb = (Button) findViewById(R.id.login_id);
+
         loginb.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -90,14 +94,16 @@ public class MainActivity extends AppCompatActivity {
     }
     public void A()
     {
-        // George check this
-        //Intent intent = new Intent(this, verify_reg_number.class);
         Intent intent = new Intent(this, verification.class);
         startActivity(intent);
     }
+
+    @SuppressLint("WrongViewCast")
     void findViews()
     {
         reg_num = findViewById(R.id.email);
         password = findViewById(R.id.password);
+
+
     }
 }

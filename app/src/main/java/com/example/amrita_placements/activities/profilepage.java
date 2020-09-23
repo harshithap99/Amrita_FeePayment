@@ -10,37 +10,37 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.amrita_placements.R;
 
-public class labfines extends AppCompatActivity {
-    Button formid;
-    Button payid;
+public class profilepage extends AppCompatActivity {
+    Button Change_password;
+    Button View_receipts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.lab_fines);
-        formid = findViewById(R.id.form_id);
-        payid = findViewById(R.id.pay_id);
-        formid.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.profile_page);
+        Change_password = findViewById(R.id.button);
+        View_receipts = findViewById(R.id.view_receipts);
+        Change_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                go_to_formpage();
+                go_to_change_password();
             }
         });
-        payid.setOnClickListener(new View.OnClickListener() {
+        View_receipts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                go_to_payment();
+                go_to_view_receipts();
             }
         });
     }
-    public void go_to_formpage()
+    public void go_to_change_password()
     {
-        Intent intent = new Intent(this, formpage.class);
+        Intent intent = new Intent(this, changepassword.class);
         startActivity(intent);
     }
-    public void go_to_payment()
+    public void go_to_view_receipts()
     {
-        Intent intent = new Intent(this, paypage.class);
+        Intent intent = new Intent(this, Viewreceipts.class);
         startActivity(intent);
     }
 }

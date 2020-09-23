@@ -1,20 +1,17 @@
 package com.example.amrita_placements.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.amrita_placements.R;
 
-public class paypage extends AppCompatActivity {
-
-
-
+public class Viewreceipts extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.payment);
+        setContentView(R.layout.login_test);
     }
 }
