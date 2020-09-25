@@ -20,7 +20,8 @@ public class busfees extends AppCompatActivity {
         setContentView(R.layout.busfees);
         formid = findViewById(R.id.form_id);
         payid = findViewById(R.id.pay_id);
-        formid.setOnClickListener(new View.OnClickListener() {
+        formid.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 go_to_formpage();

@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
-    Button loginb;
+    Button login;
     EditText reg_num;
     EditText password;
     FirebaseAuth fAuth;
@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         findViews();
-        loginb = (Button) findViewById(R.id.login_id);
+        login = (Button) findViewById(R.id.login_id);
 
-        loginb.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
