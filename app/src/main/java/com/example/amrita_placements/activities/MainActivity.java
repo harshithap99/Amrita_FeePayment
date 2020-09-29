@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.amrita_placements.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                A();
+
                 // we need to remove the function call from here and call it after conforming the credentials
                 final String user_reg_number = reg_num.getText().toString();
                 final String pass_word = password.getText().toString();
                 if (TextUtils.isEmpty(user_reg_number)) {
-                    reg_num.setError("Registration number.is.required");
+                    reg_num.setError("Registration number is required");
                     return;
                 }
                 if (TextUtils.isEmpty(pass_word)) {
-                    password.setError("password.is.empty");
+                    password.setError("password is empty");
                     return;
                 }
                // if(Objects.equals(user_reg_number, "BL.EN.U4CSE17044")&&Objects.equals(pass_word,"BL.EN.U4CSE17044"))
@@ -69,9 +72,34 @@ public class MainActivity extends AppCompatActivity {
                 //A();
                //DocumentReference documentref = FirebaseFirestore.getInstance().collection("students").document(user_reg_number);
 
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("students");
-                Query checkUser = reference.orderByChild("username").equalTo(user_reg_number);
-                checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                DocumentReference reference = db.collection("students").document(user_reg_number);
+                reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+
+                        String got_pass = "not got";
+                        got_pass = documentSnapshot.getString("PASSWORD");
+                            if(pass_word.equals(got_pass))
+                            {
+                                A();
+                            }
+                            else
+                            {
+                                password.setError("Wrong password");
+
+                            }
+                        }
+                        else
+                        {
+                            reg_num.setError("Registration number is invalid");
+                        }
+                    }
+                });
+
+               // Query checkUser = reference.orderByChild("username").equalTo(user_reg_number);
+                /*checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.exists()) {
@@ -88,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
-                });
+                });*/
         }
         });
     }
