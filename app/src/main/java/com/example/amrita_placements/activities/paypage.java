@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,10 +20,32 @@ public class paypage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.payment);
+        findViews();
         payment = findViewById(R.id.payment);
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String accountnumber = account_number.getText().toString();
+                String accountname = name.getText().toString();
+                String accountcvv = cvv.getText().toString();
+                String accountexpiry = expiry_date.getText().toString();
+                if (TextUtils.isEmpty(accountnumber)) {
+                    account_number.setError("Account number is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(accountname)) {
+                    name.setError("Account holder name is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(accountcvv)) {
+                    cvv.setError("CVV is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(accountexpiry)) {
+                    expiry_date.setError("Expiry date is required");
+                    return;
+                }
+                // we need to check this with the database and then detect the amount from user collection
                 go_to_homepage();
             }
         });
