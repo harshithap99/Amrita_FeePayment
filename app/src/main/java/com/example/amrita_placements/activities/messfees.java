@@ -9,10 +9,20 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.amrita_placements.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class messfees extends AppCompatActivity {
     Button payid;
     Button formid;
+    private FirebaseFirestore db;
+    FirebaseAuth fAuth;
+    final FirebaseUser this_user = FirebaseAuth.getInstance().getCurrentUser();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +30,29 @@ public class messfees extends AppCompatActivity {
         setContentView(R.layout.messfees);
         formid = findViewById(R.id.form_id);
         payid = findViewById(R.id.pay_id);
+        db = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
         formid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                go_to_formpage();
+                DocumentReference reference = db.collection("students").document(this_user.getUid());
+                reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists())
+                        {
+                            String got_flag = "not got";
+                            got_flag = documentSnapshot.getString("BUS_FLAG");
+                            if (got_flag.equals("False"))
+                            {
+                                go_to_formpage();
+                            }
+                            else {
+                                go_to_neftpage();
+                            }
+                        }
+                    }
+                });
             }
         });
         payid.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +65,11 @@ public class messfees extends AppCompatActivity {
     public void go_to_formpage()
     {
         Intent intent = new Intent(this, formpage.class);
+        startActivity(intent);
+    }
+    public void go_to_neftpage()
+    {
+        Intent intent = new Intent(this, neftpage.class);
         startActivity(intent);
     }
     public void go_to_payment()

@@ -59,7 +59,7 @@
             android:background="#F853A8" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/account_number"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
@@ -68,7 +68,6 @@
             android:layout_marginRight="0dp"
             android:layout_marginBottom="0dp"
             android:background="@drawable/shapeemail"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
             android:drawablePadding="10dp"
             android:hint="ACCOUNT NUMBER"
             android:padding="15dp"
@@ -78,7 +77,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/Expiry_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -86,9 +85,42 @@
             android:layout_marginTop="-10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/shapeemail"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:hint="EXPIRY DATE"
+            android:padding="15dp"
+            android:textColor="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/Cvv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shapeemail"
             android:drawablePadding="10dp"
             android:hint="CVV"
+            android:padding="15dp"
+            android:textColor="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/NAME"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shapeemail"
+            android:drawablePadding="10dp"
+            android:hint="ACCOUNT HOLDER NAME"
             android:padding="15dp"
             android:textColor="@android:color/black"
             android:textColorHighlight="@android:color/black"

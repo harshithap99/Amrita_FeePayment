@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.amrita_placements.R;
 
-public class Viewreceipts extends AppCompatActivity {
+public class neftpage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.view_receipts);
+        setContentView(R.layout.neft_processing);
     }
 }

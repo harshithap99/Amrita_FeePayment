@@ -97,26 +97,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-               // Query checkUser = reference.orderByChild("username").equalTo(user_reg_number);
-                /*checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            String passwordFromDB = dataSnapshot.child(user_reg_number).child("password").getValue(String.class);
-                            if (passwordFromDB.equals(pass_word))
-                                A();
-                            else
-                                Toast.makeText(MainActivity.this,"Incorrect Password",Toast.LENGTH_LONG).show();
-                        } else
-                            Toast.makeText(MainActivity.this,"Incorrect Username",Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });*/
         }
         });
     }
