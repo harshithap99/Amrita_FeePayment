@@ -2,6 +2,7 @@ package com.example.amrita_placements.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -36,6 +37,51 @@ public class formpage extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String studentname = student_name.getText().toString();
+                String studentreg= student_reg_number.getText().toString();
+                String neftname= neft_name.getText().toString();
+                String neftid= neft_id.getText().toString();
+                String neftamount = amount.getText().toString();
+                String bankname= bank_name.getText().toString();
+                String bankplace = bank_place.getText().toString();
+                String mobilenumber= mobile_number.getText().toString();
+                String neftdate = date.getText().toString();
+                if (TextUtils.isEmpty(studentname)) {
+                    student_name.setError(" Student Name is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(studentreg)) {
+                    student_reg_number.setError("Student Registration Number is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(neftname)) {
+                    neft_name.setError(" Person Name is required is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(neftid)) {
+                    neft_id.setError("Neft ID is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(neftamount)) {
+                   amount .setError("Neft Amount is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(bankname)) {
+                    bank_name.setError("BankName is required");
+                    return;
+                } if (TextUtils.isEmpty(bankplace)) {
+                    bank_place.setError("Bank Branch is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(mobilenumber)) {
+                    mobile_number.setError("Mobile Number is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(neftdate)) {
+                    date.setError("Neft Date is required");
+                    return;
+                }
+
                 DocumentReference reference = db.collection("students").document(this_user.getUid());
                 reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override

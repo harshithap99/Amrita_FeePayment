@@ -3,6 +3,7 @@ package com.example.amrita_placements.activities;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -47,6 +48,18 @@ public class changepassword extends AppCompatActivity {
                 final String user_current_password = currentpassword.getText().toString();
                 final String user_new_password = newpassword.getText().toString();
                 final String user_new_password1 = newpassword1.getText().toString();
+                if (TextUtils.isEmpty(user_current_password)) {
+                    currentpassword.setError("Current password is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(user_new_password)) {
+                    newpassword.setError("New password is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(user_new_password1)) {
+                    newpassword1.setError("conformation of new password is required");
+                    return;
+                }
                 if (Objects.equals(user_new_password, user_new_password1)) {
                     DocumentReference reference = db.collection("students").document(this_user.getUid());
                     reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
