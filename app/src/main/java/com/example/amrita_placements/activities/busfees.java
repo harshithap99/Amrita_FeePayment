@@ -1,10 +1,12 @@
 package com.example.amrita_placements.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +14,8 @@ import com.example.amrita_placements.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -19,10 +23,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class busfees extends AppCompatActivity {
     Button formid;
     Button payid;
+   // EditText balance;
     private FirebaseFirestore db;
     FirebaseAuth fAuth;
     final FirebaseUser this_user = FirebaseAuth.getInstance().getCurrentUser();
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +36,8 @@ public class busfees extends AppCompatActivity {
         setContentView(R.layout.busfees);
         formid = findViewById(R.id.form_id);
         payid = findViewById(R.id.pay_id);
+        //GEORGE CHECK THE LINES THAT I COMMENTED
+        //balance = findViewById(R.id.displayamount);
         db = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         formid.setOnClickListener(new View.OnClickListener() {
@@ -41,9 +49,11 @@ public class busfees extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists())
                         {
+                           // String amount = documentSnapshot.getString("BUSFEES");
+                            //balance.setText(amount);
                             String got_flag = "not got";
-                            got_flag = documentSnapshot.getString("BUS_FLAG");
-                            if (got_flag.equals("False"))
+                            got_flag = documentSnapshot.getString("BUS FLAG");
+                            if (got_flag.equals("TRUE"))
                             {
                                 go_to_formpage();
                             }

@@ -21,7 +21,7 @@
         android:layout_marginBottom="261dp"
         android:fontFamily="@font/bowlby_one"
         android:gravity="center"
-        android:text= "Bus Fees"
+        android:text="Bus Fees"
         android:textColor="@android:color/white"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/form_id"
@@ -169,5 +169,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/displayamount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="47dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textGrid"
+        app:layout_constraintTop_toBottomOf="@+id/textGrid" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

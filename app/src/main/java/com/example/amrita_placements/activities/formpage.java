@@ -3,20 +3,29 @@ package com.example.amrita_placements.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.amrita_placements.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class formpage extends AppCompatActivity {
     Button submit;
@@ -82,12 +91,37 @@ public class formpage extends AppCompatActivity {
                     return;
                 }
 
-                DocumentReference reference = db.collection("students").document(this_user.getUid());
+                final DocumentReference reference = db.collection("students").document(this_user.getUid());
                 reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists())
                         {
+                            // GEORGE CHECK HERE
+                            String get_branch = "not got";
+                            final String TAG = "";
+                            get_branch = documentSnapshot.getString("BATCH");
+                            Map<String, Object> data1 = new HashMap<>();
+                            data1.put("name", "San Francisco");
+                            data1.put("state", "CA");
+                            data1.put("country", "USA");
+                            data1.put("capital", false);
+                            data1.put("population", 860000);
+                            data1.put("regions", Arrays.asList("west_coast", "norcal"));
+                            db.collection("FORM").document("2017").set(data1)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error writing document", e);
+                                        }
+                                    });
                            // we need to store all the data in the form collection with the user id
                         }
                     }
