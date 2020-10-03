@@ -1,6 +1,5 @@
 package com.example.amrita_placements.activities;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,17 +12,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.amrita_placements.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -50,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-
-                // we need to remove the function call from here and call it after conforming the credentials
                 final String user_reg_number = reg_num.getText().toString();
                 final String pass_word = password.getText().toString();
                 if (TextUtils.isEmpty(user_reg_number)) {
@@ -62,14 +52,6 @@ public class MainActivity extends AppCompatActivity {
                     password.setError("password is empty");
                     return;
                 }
-               // if(Objects.equals(user_reg_number, "BL.EN.U4CSE17044")&&Objects.equals(pass_word,"BL.EN.U4CSE17044"))
-                //{
-                  // A();
-                //}else
-                //{
-                  //  Toast.makeText(MainActivity.this,"Incorrect UserName or Password",Toast.LENGTH_LONG).show();
-                //}
-                //A();
                //DocumentReference documentref = FirebaseFirestore.getInstance().collection("students").document(user_reg_number);
 
                 DocumentReference reference = db.collection("students").document(user_reg_number);
@@ -78,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if(documentSnapshot.exists())
                         {
-
                         String got_pass = "not got";
                         got_pass = documentSnapshot.getString("PASSWORD");
                             if(pass_word.equals(got_pass))
@@ -88,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                             else
                             {
                                 password.setError("Wrong password");
-
                             }
                         }
                         else
@@ -111,7 +91,5 @@ public class MainActivity extends AppCompatActivity {
     {
         reg_num = findViewById(R.id.email);
         password = findViewById(R.id.password);
-
-
     }
 }

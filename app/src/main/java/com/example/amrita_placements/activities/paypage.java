@@ -55,7 +55,8 @@ public class paypage extends AppCompatActivity {
         Intent intent = new Intent(this, verification.class);
         startActivity(intent);
     }
-    public void findViews(){
+    public void findViews()
+    {
         account_number = findViewById(R.id.account_number);
         name = findViewById(R.id.NAME);
         cvv = findViewById(R.id.Cvv);

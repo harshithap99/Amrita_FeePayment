@@ -142,6 +142,4 @@ public class verification extends AppCompatActivity {
         Intent intent = new Intent(this, otherdues.class);
         startActivity(intent);
     }
-
-
 }

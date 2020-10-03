@@ -42,7 +42,7 @@ public class canteendues extends AppCompatActivity {
                         if (documentSnapshot.exists())
                         {
                             String got_flag = "not got";
-                            got_flag = documentSnapshot.getString("BUS_FLAG");
+                            got_flag = documentSnapshot.getString("CANTEEN_FLAG");
                             if (got_flag.equals("False"))
                             {
                                 go_to_formpage();

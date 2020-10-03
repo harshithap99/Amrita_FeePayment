@@ -31,7 +31,6 @@ public class changepassword extends AppCompatActivity {
     FirebaseAuth fAuth;
     final FirebaseUser this_user = FirebaseAuth.getInstance().getCurrentUser();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +70,9 @@ public class changepassword extends AppCompatActivity {
                                 got_pass = documentSnapshot.getString("PASSWORD");
                                 if (user_current_password.equals(got_pass))
                                 {
-                                    go_to_homepage();
                                     // we need to store the user_new_password in the password of the user
+                                    go_to_homepage();
+
                                 }
                                 else {
                                     currentpassword.setError("Wrong password");
