@@ -1,5 +1,6 @@
 package com.example.amrita_placements.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,9 +13,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.amrita_placements.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -55,27 +59,29 @@ public class MainActivity extends AppCompatActivity {
                //DocumentReference documentref = FirebaseFirestore.getInstance().collection("students").document(user_reg_number);
 
                 DocumentReference reference = db.collection("students").document(user_reg_number);
-                reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if(documentSnapshot.exists())
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful())
                         {
-                        String got_pass = "not got";
-                        got_pass = documentSnapshot.getString("PASSWORD");
-                            if(pass_word.equals(got_pass))
-                            {
-                                A();
+                            DocumentSnapshot documentSnapshot = task.getResult();
+                            if (documentSnapshot.exists()) {
+                                String got_pass = "not got";
+                                got_pass = documentSnapshot.getString("PASSWORD");
+                                if (pass_word.equals(got_pass)) {
+
+                                    A();
+                                } else {
+                                    password.setError("Wrong password");
+                                }
+                            } else {
+                                reg_num.setError("Registration number is invalid");
                             }
-                            else
-                            {
-                                password.setError("Wrong password");
-                            }
-                        }
-                        else
-                        {
-                            reg_num.setError("Registration number is invalid");
-                        }
                     }
+                        else{
+                            Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                }
                 });
         }
         });
@@ -83,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
     public void A()
     {
         Intent intent = new Intent(this, verification.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("user1", reg_num.getText().toString());
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

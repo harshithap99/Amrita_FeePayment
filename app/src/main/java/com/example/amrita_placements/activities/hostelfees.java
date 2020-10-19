@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,6 +29,10 @@ public class hostelfees extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.hostelfees);
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
+        Toast.makeText(getApplicationContext(), user1, Toast.LENGTH_SHORT).show();
         formid = findViewById(R.id.form_id);
         payid = findViewById(R.id.pay_id);
         formid.setOnClickListener(new View.OnClickListener() {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -12,11 +13,17 @@ import androidx.cardview.widget.CardView;
 import com.example.amrita_placements.R;
 
 public class verification extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.homepage1);
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
+        Toast.makeText(getApplicationContext(), user1, Toast.LENGTH_SHORT).show();
 
         ImageButton log_out, profile;
         CardView hostelfees, busfees, canteendues, libraryfines, otherfees, tutionfees, messfees, labfines;
@@ -95,6 +102,7 @@ public class verification extends AppCompatActivity {
     }
     public void go_to_login()
     {
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -105,7 +113,14 @@ public class verification extends AppCompatActivity {
     }
     public void go_to_hostelfees()
     {
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("user1", user1);
+
         Intent intent = new Intent(this, hostelfees.class);
+        intent.putExtras(bundle1);
         startActivity(intent);
     }
     public void go_to_messfees()
