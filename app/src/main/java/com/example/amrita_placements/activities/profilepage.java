@@ -49,7 +49,13 @@ public class profilepage extends AppCompatActivity {
     }
     public void go_to_view_receipts()
     {
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
         Intent intent = new Intent(this, Viewreceipts.class);
+        final Bundle bundle1 = new Bundle();
+        bundle1.putString("user1", user1);
+        intent.putExtras(bundle1);
         startActivity(intent);
     }
 }

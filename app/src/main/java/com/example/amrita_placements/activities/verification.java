@@ -7,13 +7,19 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.amrita_placements.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class verification extends AppCompatActivity {
-
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +29,6 @@ public class verification extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         String user1 = bundle.getString("user1");
-        Toast.makeText(getApplicationContext(), user1, Toast.LENGTH_SHORT).show();
 
         ImageButton log_out, profile;
         CardView hostelfees, busfees, canteendues, libraryfines, otherfees, tutionfees, messfees, labfines;
@@ -105,23 +110,65 @@ public class verification extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        this.finish();
     }
     public void go_to_profile()
     {
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
         Intent intent = new Intent(this, profilepage.class);
+        final Bundle bundle1 = new Bundle();
+        bundle1.putString("user1", user1);
+        intent.putExtras(bundle1);
         startActivity(intent);
     }
     public void go_to_hostelfees()
     {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
-        String user1 = bundle.getString("user1");
-        Bundle bundle1 = new Bundle();
-        bundle1.putString("user1", user1);
+        final String user1 = bundle.getString("user1");
+        db = FirebaseFirestore.getInstance();
 
-        Intent intent = new Intent(this, hostelfees.class);
-        intent.putExtras(bundle1);
-        startActivity(intent);
+
+        assert user1 != null;
+        Toast.makeText(getApplicationContext(), user1, Toast.LENGTH_SHORT).show();
+        DocumentReference reference = db.collection("students").document(user1);
+        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful())
+                {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        boolean flagforneft = false;
+                        flagforneft = (boolean) documentSnapshot.get("neftflag");
+                        if(flagforneft)
+                        {
+                            go_to_processing();
+                        }
+                        else
+                        {
+                            Intent intent = new Intent(verification.this, hostelfees.class);
+                            final Bundle bundle1 = new Bundle();
+                            bundle1.putString("user1", user1);
+                            intent.putExtras(bundle1);
+                            startActivity(intent);
+
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "didnt find the doc in firebase", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+
     }
     public void go_to_messfees()
     {
@@ -156,5 +203,18 @@ public class verification extends AppCompatActivity {
     {
         Intent intent = new Intent(this, otherdues.class);
         startActivity(intent);
+    }
+
+    public void go_to_processing()
+    {
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
+        Intent intent = new Intent(this, NeftProcessing.class);
+        final Bundle bundle1 = new Bundle();
+        bundle1.putString("user1", user1);
+        intent.putExtras(bundle1);
+        startActivity(intent);
+
     }
 }

@@ -5,6 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#FFFFFF</color>
     <color name="signupColor">#066e8a</color>
-
+    <color name="ourpink">#F853A8</color>
+    <color name="black">#000000</color>
     <color name="black_overlay">#66000000</color>
 </resources>

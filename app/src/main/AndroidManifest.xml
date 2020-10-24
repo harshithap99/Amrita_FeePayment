@@ -24,7 +24,9 @@
         <activity android:name="com.example.amrita_placements.activities.paypage" />
         <activity android:name="com.example.amrita_placements.activities.tuitionfees" />
         <activity android:name="com.example.amrita_placements.activities.Viewreceipts" />
-
+        <activity android:name="com.example.amrita_placements.activities.neftpage" />
+        <activity android:name="com.example.amrita_placements.activities.NeftProcessing" />
+        <activity android:name="com.example.amrita_placements.activities.bills" />
         <activity android:name=".activities.MainActivity">
 
             <intent-filter>
@@ -33,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <meta-data
             android:name="preloaded_fonts"

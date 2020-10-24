@@ -3,16 +3,22 @@ package com.example.amrita_placements.activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
+import android.view.ActionMode;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.amrita_placements.R;
@@ -41,6 +47,65 @@ public class MainActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         findViews();
         login = (Button) findViewById(R.id.login_id);
+
+
+        final TextView xzy = findViewById(R.id.FeePay);
+        final TextView bob = findViewById(R.id.bob);
+        final int from = ContextCompat.getColor(this, R.color.ourpink);
+        final int to   = ContextCompat.getColor(this, R.color.black);
+
+        final int from1 = ContextCompat.getColor(this, R.color.black);
+        final int to1   = ContextCompat.getColor(this, R.color.white);
+
+
+        final ValueAnimator anim = new ValueAnimator();
+
+
+        anim.setIntValues(from, to);
+        anim.setEvaluator(new ArgbEvaluator());
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                findViewById(R.id.yokk).setBackgroundColor((Integer)valueAnimator.getAnimatedValue());
+            }
+        });
+        Integer colorFrom = getResources().getColor(R.color.black);
+        Integer colorTo = getResources().getColor(R.color.white);
+        final ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                xzy.setTextColor((Integer)animator.getAnimatedValue());
+                bob.setTextColor((Integer)animator.getAnimatedValue());
+
+            }
+
+        });
+        colorAnimation.setDuration(2000);
+        anim.setDuration(1000);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                colorAnimation.start();
+                anim.start();
+
+                final Handler handler1 = new Handler();
+                handler1.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        login.setVisibility(View.VISIBLE);
+                        password.setVisibility(View.VISIBLE);
+                        reg_num.setVisibility(View.VISIBLE);
+                    }
+                }, 1000);
+
+            }
+        }, 500);
+
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -86,6 +151,13 @@ public class MainActivity extends AppCompatActivity {
         }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        this.finish();
+        System.exit(1);
+    }
+
     public void A()
     {
         Intent intent = new Intent(this, verification.class);
@@ -93,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("user1", reg_num.getText().toString());
         intent.putExtras(bundle);
         startActivity(intent);
+        this.finish();
     }
 
     @SuppressLint("WrongViewCast")
