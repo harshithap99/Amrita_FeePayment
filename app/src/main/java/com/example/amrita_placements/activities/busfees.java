@@ -7,11 +7,16 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.amrita_placements.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -23,10 +28,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class busfees extends AppCompatActivity {
     Button formid;
     Button payid;
-   // EditText balance;
+    TextView AMT;
+    int flag=0;
     private FirebaseFirestore db;
     FirebaseAuth fAuth;
-    final FirebaseUser this_user = FirebaseAuth.getInstance().getCurrentUser();
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -36,33 +41,45 @@ public class busfees extends AppCompatActivity {
         setContentView(R.layout.busfees);
         formid = findViewById(R.id.form_id);
         payid = findViewById(R.id.pay_id);
-        //GEORGE CHECK THE LINES THAT I COMMENTED
-        //balance = findViewById(R.id.displayamount);
         db = FirebaseFirestore.getInstance();
-        fAuth = FirebaseAuth.getInstance();
+        AMT = findViewById(R.id.displayamount);
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        final String user1 = bundle.getString("user1");
+        DocumentReference reference = db.collection("students").document(user1);
+        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful())
+                {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        String amount = "not got";
+                        long amount_int;
+                        amount = documentSnapshot.get("BUS FEES").toString();
+                        amount_int = (long) documentSnapshot.get("BUS FEES");
+                        if(amount_int>0)
+                        {
+                            flag=1;
+                        }
+                        AMT.setText(amount);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "didnt find the doc in firebase", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         formid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DocumentReference reference = db.collection("students").document(this_user.getUid());
-                reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists())
-                        {
-                           // String amount = documentSnapshot.getString("BUSFEES");
-                            //balance.setText(amount);
-                            String got_flag = "not got";
-                            got_flag = documentSnapshot.getString("BUS FLAG");
-                            if (got_flag.equals("TRUE"))
-                            {
-                                go_to_formpage();
-                            }
-                            else {
-                               go_to_neftpage();
-                            }
-                        }
-                    }
-                });
+                if(flag==1)
+                    go_to_formpage();
+                else
+                    Toast.makeText(getApplicationContext(), "No dues to be cleared", Toast.LENGTH_SHORT).show();
             }
         });
         payid.setOnClickListener(new View.OnClickListener() {
@@ -74,8 +91,17 @@ public class busfees extends AppCompatActivity {
     }
     public void go_to_formpage()
     {
-        Intent intent = new Intent(this, formpage.class);
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("user1", user1);
+
+
+        Intent intent = new Intent(this, busformpage.class);
+        intent.putExtras(bundle1);
         startActivity(intent);
+        this.finish();
     }
     public void go_to_neftpage()
     {
@@ -84,7 +110,16 @@ public class busfees extends AppCompatActivity {
     }
     public void go_to_payment()
     {
-        Intent intent = new Intent(this, paypage.class);
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
+        Bundle bundle1 = new Bundle();
+        bundle1.putString("user1", user1);
+
+
+        Intent intent = new Intent(this, buspaypage.class);
+        intent.putExtras(bundle1);
         startActivity(intent);
+        this.finish();
     }
 }
