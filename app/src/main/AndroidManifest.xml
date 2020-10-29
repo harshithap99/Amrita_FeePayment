@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.amrita_placements">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -27,6 +29,7 @@
         <activity android:name="com.example.amrita_placements.activities.neftpage" />
         <activity android:name="com.example.amrita_placements.activities.NeftProcessing" />
         <activity android:name="com.example.amrita_placements.activities.bills" />
+
         <activity android:name=".activities.MainActivity">
 
             <intent-filter>

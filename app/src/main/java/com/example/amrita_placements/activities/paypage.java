@@ -97,6 +97,7 @@ public class paypage extends AppCompatActivity {
                           data.put("amt", amount);
                           data.put("mobile", phonenumber);
                           data.put("emailid", email);
+                          data.put("fee_type", "Hostel Fees");
                           data.put("paytype", "mobile payment");
                           data.put("date", currentTime.toString());
 

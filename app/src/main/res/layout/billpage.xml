@@ -286,7 +286,7 @@
             app:layout_constraintTop_toBottomOf="@+id/paydate" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/download"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="96dp"
@@ -297,7 +297,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="104dp"
