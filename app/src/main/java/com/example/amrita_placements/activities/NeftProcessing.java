@@ -29,6 +29,7 @@ public class NeftProcessing extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.neft_processing);
         retrieve_values();
@@ -42,7 +43,7 @@ public class NeftProcessing extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         String user1 = bundle.getString("user1");
-
+        String type = bundle.getString("type");
         db = FirebaseFirestore.getInstance();
 
 
@@ -51,9 +52,9 @@ public class NeftProcessing extends AppCompatActivity {
         {
             //accepted
             Map<String, Object> aftertask  = new HashMap<>();
-            aftertask.put("neftflag", false);
-            aftertask.put("neftaccepted", -1);
-            aftertask.put("HOSTELFEES", 0);
+            aftertask.put(type+"neftflag", false);
+            aftertask.put(type+"neftaccepted", -1);
+            aftertask.put(type, 0);
 
             db.collection("students").document(user1)
                     .set(aftertask, SetOptions.merge());
@@ -63,8 +64,8 @@ public class NeftProcessing extends AppCompatActivity {
             //rejected
 
             Map<String, Object> aftertask  = new HashMap<>();
-            aftertask.put("neftflag", false);
-            aftertask.put("neftaccepted", -1);
+            aftertask.put(type+"neftflag", false);
+            aftertask.put(type+"neftaccepted", -1);
 
 
             db.collection("students").document(user1)
@@ -94,8 +95,11 @@ public class NeftProcessing extends AppCompatActivity {
                 {
                     DocumentSnapshot documentSnapshot = task.getResult();
                     if (documentSnapshot.exists()) {
-
-                        neft_status = (long) documentSnapshot.get("neftaccepted");
+                        Bundle bundle = getIntent().getExtras();
+                        assert bundle != null;
+                        String user1 = bundle.getString("user1");
+                        String type = bundle.getString("type");
+                        neft_status = (long) documentSnapshot.get(type+"neftaccepted");
                         String g = Long.toString(neft_status);
                         Toast.makeText(getApplicationContext(), g, Toast.LENGTH_LONG).show();
                         if(neft_status==1)

@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -28,15 +30,18 @@ import java.util.Locale;
 import java.util.Map;
 
 public class paypage extends AppCompatActivity {
-    Button payment;
+    private static final int TEZ_REQUEST_CODE = 123;
+    Button payment,gpay;
     EditText account_number,cvv,expiry_date,name;
     String accountnumber,accountname,accountcvv,accountexpiry;
+    String GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.payment);
         findViews();
+        gpay = findViewById(R.id.gpaybutton);
         payment = findViewById(R.id.payment);
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,43 @@ public class paypage extends AppCompatActivity {
                 changelayout();
             }
         });
+
+
+        gpay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int GOOGLE_PAY_REQUEST_CODE = 123;
+
+                Bundle bundle = getIntent().getExtras();
+
+                final String amount = bundle.getString("amount");
+
+                Toast.makeText(getApplicationContext(), "heereee", Toast.LENGTH_SHORT).show();
+
+                Uri uri =
+                        new Uri.Builder()
+                                .scheme("upi")
+                                .authority("pay")
+                                .appendQueryParameter("pa", "harshitharavi26@okicici")
+                                .appendQueryParameter("pn", "FeePay Amrita")
+                                //.appendQueryParameter("mc", "your-merchant-code")
+                                //.appendQueryParameter("tr", "your-transaction-ref-id")
+                                //.appendQueryParameter("tn", "your-transaction-note")
+                                .appendQueryParameter("am", amount)
+                                .appendQueryParameter("cu", "INR")
+                               // .appendQueryParameter("url", "your-transaction-url")
+                                .build();
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(uri);
+                intent.setPackage(GOOGLE_PAY_PACKAGE_NAME);
+                startActivityForResult(intent, GOOGLE_PAY_REQUEST_CODE);
+
+
+
+            }
+        });
+
+
     }
     public void changelayout()
     {
@@ -72,6 +114,7 @@ public class paypage extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         final String user1 = bundle.getString("user1");
+        final String whatfees = bundle.getString("whatfees");
 
         DocumentReference reference = db.collection("students").document(user1);
         reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -87,7 +130,8 @@ public class paypage extends AppCompatActivity {
 
                         sname = documentSnapshot.getString("name");
                         phonenumber = documentSnapshot.get("phonenumber").toString();
-                        amount = documentSnapshot.get("HOSTELFEES").toString();
+                        assert whatfees != null;
+                        amount = documentSnapshot.get(whatfees).toString();
                         email = documentSnapshot.getString("email");
                         Map<String, Object> data = new HashMap<>();
                           data.put("Student_name", sname);
@@ -97,13 +141,13 @@ public class paypage extends AppCompatActivity {
                           data.put("amt", amount);
                           data.put("mobile", phonenumber);
                           data.put("emailid", email);
-                          data.put("fee_type", "Hostel Fees");
+                          data.put("fee_type", whatfees);
                           data.put("paytype", "mobile payment");
                           data.put("date", currentTime.toString());
 
                         Map<String, Object> data1 = new HashMap<>();
-                        data1.put("HOSTELFEES", 0);
-                        db.collection("students").document(user1).collection("reciepts").document("Hostelfee"+currentDate)
+                        data1.put(whatfees, 0);
+                        db.collection("students").document(user1).collection("reciepts").document(whatfees+currentDate)
                          .set(data);
 
                         db.collection("students").document(user1)
@@ -144,4 +188,19 @@ public class paypage extends AppCompatActivity {
         cvv = findViewById(R.id.Cvv);
         expiry_date = findViewById(R.id.Expiry_date);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == TEZ_REQUEST_CODE) {
+            // Process based on the data in response.
+            Toast.makeText(getApplicationContext(), " "+requestCode+" "+resultCode+" "+data, Toast.LENGTH_SHORT).show();
+
+            Log.d("result", data.getStringExtra("Status"));
+            Log.e("result", " "+requestCode+" "+resultCode+" "+data);
+
+        }
+    }
+
 }

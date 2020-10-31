@@ -127,15 +127,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/balance" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="268dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
         android:text="Want to make a bank transfer?"
         android:textColor="#FFFFFF"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -175,8 +175,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/amaranth"
-        android:text="0"
-        android:textColor="#FFFFFF"
+        android:text="Loading.."
+        android:textColor="#96E600"
         android:textSize="76sp"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"

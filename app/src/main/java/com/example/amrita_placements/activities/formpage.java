@@ -1,5 +1,6 @@
 package com.example.amrita_placements.activities;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +39,7 @@ public class formpage extends AppCompatActivity {
     EditText student_name,student_reg_number,neft_name,bank_name,bank_place,mobile_number,amount,date,neft_id;
     String r_sname,r_amount,r_phonenumber;
     private FirebaseFirestore db;
-
+    String feetype;
 
 
     @Override
@@ -52,7 +55,7 @@ public class formpage extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         final String user1 = bundle.getString("user1");
-
+        feetype = bundle.getString("type");
         assert user1 != null;
         String yearofuser = "20";
         for(int i =11; i<=12; i++)
@@ -125,6 +128,7 @@ public class formpage extends AppCompatActivity {
                 data.put("neft_date", neftdate);
                 data.put("bank_name", bankname);
                 data.put("bankplace", bankplace);
+                data.put("type", feetype);
                 data.put("mob", mobilenumber);
 
                 db.collection("FORMS").document(finalYearofuser).collection("collection")
@@ -135,12 +139,12 @@ public class formpage extends AppCompatActivity {
                 String user1 = bundle.getString("user1");
 
                 Map<String, Object> flag_neft  = new HashMap<>();
-                flag_neft.put("neftflag", true);
+                flag_neft.put(feetype+"neftflag", true);
 
                 db.collection("students").document(user1)
                         .set(flag_neft, SetOptions.merge());
 
-                go_to_processing();
+                go_to_processing(feetype);
             }
         });
 
@@ -166,6 +170,34 @@ public class formpage extends AppCompatActivity {
             }
         });
 
+        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                {
+                    // Get Current Date
+                    final Calendar c = Calendar.getInstance();
+                    int mYear,mMonth,mDay;
+                    mYear = c.get(Calendar.YEAR);
+                    mMonth = c.get(Calendar.MONTH);
+                    mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(formpage.this,
+                            new DatePickerDialog.OnDateSetListener() {
+
+                                @Override
+                                public void onDateSet(DatePicker view, int year,
+                                                      int monthOfYear, int dayOfMonth) {
+
+                                    date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                                }
+                            }, mYear, mMonth, mDay);
+                    datePickerDialog.show();
+            }
+        }
+                                      });
+
         mobile_number.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus)
@@ -173,7 +205,7 @@ public class formpage extends AppCompatActivity {
             }
         });
     }
-    public void go_to_processing()
+    public void go_to_processing(String type)
     {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
@@ -181,6 +213,7 @@ public class formpage extends AppCompatActivity {
         Intent intent = new Intent(this, NeftProcessing.class);
         final Bundle bundle1 = new Bundle();
         bundle1.putString("user1", user1);
+        bundle1.putString("type", feetype);
         intent.putExtras(bundle1);
         startActivity(intent);
         this.finish();
@@ -216,7 +249,7 @@ public class formpage extends AppCompatActivity {
                     if (documentSnapshot.exists()) {
                        r_sname = documentSnapshot.getString("name");
                        r_phonenumber = documentSnapshot.get("phonenumber").toString();
-                       r_amount = documentSnapshot.get("HOSTELFEES").toString();
+                       r_amount = documentSnapshot.get(feetype).toString();
 
                     } else {
                         Toast.makeText(getApplicationContext(), "didnt find the doc in firebase", Toast.LENGTH_SHORT).show();

@@ -21,7 +21,7 @@
         android:layout_marginBottom="261dp"
         android:fontFamily="@font/bowlby_one"
         android:gravity="center"
-        android:text= "canteen dues"
+        android:text="Canteen Fees"
         android:textColor="@android:color/white"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/form_id"
@@ -127,15 +127,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/balance" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="268dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
         android:text="Want to make a bank transfer?"
         android:textColor="#FFFFFF"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -169,5 +169,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/AMT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amaranth"
+        android:text="Loading.."
+        android:textColor="#96E600"
+        android:textSize="76sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balance"
+        app:layout_constraintVertical_bias="0.432" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

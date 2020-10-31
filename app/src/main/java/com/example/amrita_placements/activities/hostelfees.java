@@ -1,6 +1,7 @@
 package com.example.amrita_placements.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +32,7 @@ public class hostelfees extends AppCompatActivity {
     FirebaseAuth fAuth;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,7 @@ public class hostelfees extends AppCompatActivity {
                         if(amount_int>0)
                         {
                             flag=1;
+                            AMT.setTextColor(Color.parseColor("#FFFFFF"));
                         }
                         AMT.setText(amount);
 
@@ -84,7 +87,10 @@ public class hostelfees extends AppCompatActivity {
         payid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                go_to_payment();
+                if(flag==1)
+                    go_to_payment();
+                else
+                    Toast.makeText(getApplicationContext(), "No dues to be cleared", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -95,7 +101,7 @@ public class hostelfees extends AppCompatActivity {
         String user1 = bundle.getString("user1");
         Bundle bundle1 = new Bundle();
         bundle1.putString("user1", user1);
-
+        bundle1.putString("type", "HOSTELFEES");
 
         Intent intent = new Intent(this, formpage.class);
         intent.putExtras(bundle1);
@@ -114,6 +120,8 @@ public class hostelfees extends AppCompatActivity {
         String user1 = bundle.getString("user1");
         Bundle bundle1 = new Bundle();
         bundle1.putString("user1", user1);
+        bundle1.putString("whatfees", "HOSTELFEES");
+        bundle1.putString("amount", AMT.getText().toString());
 
 
         Intent intent = new Intent(this, paypage.class);
