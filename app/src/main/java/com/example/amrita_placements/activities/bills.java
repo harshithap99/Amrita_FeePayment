@@ -45,8 +45,7 @@ public class bills extends AppCompatActivity {
     TextView name,regno,mobile,paytype,accnumber,accname,pamount,feetype,feeamt,paidamt,paymod,paydate;
     String emailid;
     Button download,mail;
-    private static String FILE = Environment.getExternalStorageDirectory()
-            + "/HelloWorld.pdf";
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -78,7 +77,7 @@ public class bills extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
-        String docname = bundle.getString("docname");
+        final String docname = bundle.getString("docname");
         String user1 = bundle.getString("user1");
 
 
@@ -105,6 +104,8 @@ public class bills extends AppCompatActivity {
                         feetype.setText(documentSnapshot.getString("fee_type"));
                         feeamt.setText(documentSnapshot.getString("amt"));
                         emailid = documentSnapshot.getString("emailid");
+
+
                         download.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -118,6 +119,7 @@ public class bills extends AppCompatActivity {
 
                                             Log.v("TAG","Permission is revoked");
                                             ActivityCompat.requestPermissions(bills.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                                            onBackPressed();
                                         }
                                     }
                                     else { //permission is automatically granted on sdk<23 upon installation
@@ -160,6 +162,8 @@ public class bills extends AppCompatActivity {
                                     // write the document content
                                     String targetPdf = "/Internal storage/Documents/test.pdf";
                                     File filePath = new File(targetPdf);
+                                    String FILE = Environment.getExternalStorageDirectory()
+                                        +"/"+docname+".pdf";
                                     try {
                                         //document.writeTo(new FileOutputStream(filePath));
                                         document.writeTo(new FileOutputStream(FILE));
@@ -185,9 +189,9 @@ public class bills extends AppCompatActivity {
                             public void onClick(View v) {
                                 String editTextEmail,editTextSubject,editTextMessage;
                                 editTextEmail = emailid;
-                                editTextSubject = "PAYMENT RECIEPT" + paydate.toString();
-                                editTextMessage = "Name: " + name.toString() + "\nRegisteration Number: " + regno.toString() + "\nAccount Number: " + accnumber.toString()
-                                        + "\nPayment Type: " + paymod.toString() + "\nPay Amount: " + pamount.toString() + "\nPaid Date: " + paydate.toString() + "\nPayment Status: " + "PAID and Recorded";
+                                editTextSubject = "PAYMENT RECIEPT" + paydate.getText().toString();
+                                editTextMessage = "Name: " + name.getText().toString() + "\nRegisteration Number: " + regno.getText().toString() + "\nAccount Number: " + accnumber.getText().toString()
+                                        + "\nPayment Type: " + paymod.getText().toString() + "\nPay Amount: " + pamount.getText().toString() + "\nPaid Date: " + paydate.getText().toString() + "\nPayment Status: " + "PAID and Recorded";
                                 String email = editTextEmail.toString().trim();
                                 String subject = editTextSubject.toString().trim();
                                 String message = editTextMessage.toString().trim();

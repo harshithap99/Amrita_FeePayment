@@ -189,7 +189,7 @@ public class formpage extends AppCompatActivity {
                                 public void onDateSet(DatePicker view, int year,
                                                       int monthOfYear, int dayOfMonth) {
 
-                                    date.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                                    date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
 
                                 }
                             }, mYear, mMonth, mDay);

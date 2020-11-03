@@ -401,7 +401,13 @@ public class verification extends AppCompatActivity {
     }
     public void go_to_otherfees()
     {
-        Intent intent = new Intent(this, otherdues.class);
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        String user1 = bundle.getString("user1");
+        Intent intent = new Intent(this, courses.class);
+        final Bundle bundle1 = new Bundle();
+        bundle1.putString("user1", user1);
+        intent.putExtras(bundle1);
         startActivity(intent);
     }
 

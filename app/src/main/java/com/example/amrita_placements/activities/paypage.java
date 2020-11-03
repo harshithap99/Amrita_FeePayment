@@ -3,6 +3,7 @@ package com.example.amrita_placements.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,6 +36,7 @@ public class paypage extends AppCompatActivity {
     Button payment,gpay;
     EditText account_number,cvv,expiry_date,name;
     String accountnumber,accountname,accountcvv,accountexpiry;
+
     String GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,36 @@ public class paypage extends AppCompatActivity {
         findViews();
         gpay = findViewById(R.id.gpaybutton);
         payment = findViewById(R.id.payment);
+
+        expiry_date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                {
+                    // Get Current Date
+                    final Calendar c = Calendar.getInstance();
+                    int mYear,mMonth,mDay;
+                    mYear = c.get(Calendar.YEAR);
+                    mMonth = c.get(Calendar.MONTH);
+                    mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(paypage.this,
+                            new DatePickerDialog.OnDateSetListener() {
+
+                                @Override
+                                public void onDateSet(DatePicker view, int year,
+                                                      int monthOfYear, int dayOfMonth) {
+
+                                    expiry_date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+
+                                }
+                            }, mYear, mMonth, mDay);
+                    datePickerDialog.show();
+                }
+            }
+        });
+
+
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

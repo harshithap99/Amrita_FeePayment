@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.amrita_placements">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -12,34 +13,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.example.amrita_placements.activities.verification" />
-        <activity android:name="com.example.amrita_placements.activities.hostelfees" />
-        <activity android:name="com.example.amrita_placements.activities.profilepage" />
-        <activity android:name="com.example.amrita_placements.activities.changepassword" />
-        <activity android:name="com.example.amrita_placements.activities.busfees" />
-        <activity android:name="com.example.amrita_placements.activities.formpage" />
-        <activity android:name="com.example.amrita_placements.activities.canteendues" />
-        <activity android:name="com.example.amrita_placements.activities.labfines" />
-        <activity android:name="com.example.amrita_placements.activities.libraryfines" />
-        <activity android:name="com.example.amrita_placements.activities.messfees" />
-        <activity android:name="com.example.amrita_placements.activities.otherdues" />
-        <activity android:name="com.example.amrita_placements.activities.paypage" />
-        <activity android:name="com.example.amrita_placements.activities.tuitionfees" />
-        <activity android:name="com.example.amrita_placements.activities.Viewreceipts" />
-        <activity android:name="com.example.amrita_placements.activities.neftpage" />
-        <activity android:name="com.example.amrita_placements.activities.NeftProcessing" />
-        <activity android:name="com.example.amrita_placements.activities.bills" />
-
+        <activity
+            android:name=".activities.courses"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_courses"
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity android:name=".activities.verification" />
+        <activity android:name=".activities.hostelfees" />
+        <activity android:name=".activities.profilepage" />
+        <activity android:name=".activities.changepassword" />
+        <activity android:name=".activities.busfees" />
+        <activity android:name=".activities.formpage" />
+        <activity android:name=".activities.canteendues" />
+        <activity android:name=".activities.labfines" />
+        <activity android:name=".activities.libraryfines" />
+        <activity android:name=".activities.messfees" />
+        <activity android:name=".activities.otherdues" />
+        <activity android:name=".activities.paypage" />
+        <activity android:name=".activities.tuitionfees" />
+        <activity android:name=".activities.Viewreceipts" />
+        <activity android:name=".activities.neftpage" />
+        <activity android:name=".activities.NeftProcessing" />
+        <activity android:name=".activities.bills" />
         <activity android:name=".activities.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"
