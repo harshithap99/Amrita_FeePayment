@@ -42,7 +42,7 @@ public class courses extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private  ViewPageAdapter adapter;
-    private List<assigner> listcourses;
+    private List<assigner> listcourses,listcourses1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class courses extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         listcourses = new ArrayList<>();
-
+        listcourses1 = new ArrayList<>();
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         final String user1 = bundle.getString("user1");
@@ -80,15 +80,45 @@ public class courses extends AppCompatActivity {
 
 
 
-                            tabLayout = (TabLayout) findViewById(R.id.tablayout_id);
-                            viewPager = (ViewPager) findViewById(R.id.viewpaper_id);
-                            adapter = new ViewPageAdapter(getSupportFragmentManager());
 
-                            adapter.AddFragment(new FragmentCall(user1,listcourses),"Courses");
-                            adapter.AddFragment(new FragmentReg(),"Registered");
+                            db.collection("students").document(user1).collection("workshops")
+                                    .get()
+                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                            if (task.isSuccessful()) {
 
-                            viewPager.setAdapter(adapter);
-                            tabLayout.setupWithViewPager(viewPager);
+
+                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                    Log.d("BROOO", document.getId() + " => " + document.getData() + document.getId());
+
+
+                                                    listcourses1.add(new assigner(document.getId().toString(), document.get("short").toString()));
+
+
+                                                }
+
+
+                                                listcourses1.add(new assigner("AMAZON","Amazon workshop"));
+
+
+
+                                                tabLayout = (TabLayout) findViewById(R.id.tablayout_id);
+                                                viewPager = (ViewPager) findViewById(R.id.viewpaper_id);
+                                                adapter = new ViewPageAdapter(getSupportFragmentManager());
+
+                                                adapter.AddFragment(new FragmentCall(user1,listcourses),"Courses");
+                                                adapter.AddFragment(new FragmentReg(user1,listcourses1),"Registered");
+
+                                                viewPager.setAdapter(adapter);
+                                                tabLayout.setupWithViewPager(viewPager);
+
+                                            } else {
+                                                Log.d("BROOO", "Error getting documents: ", task.getException());
+                                            }
+                                        }
+                                    });
+
 
                         } else {
                             Log.d("BROOO", "Error getting documents: ", task.getException());

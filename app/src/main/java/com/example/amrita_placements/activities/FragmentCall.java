@@ -41,7 +41,7 @@ public class FragmentCall extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.tabcourses,container,false);
         recyclerView = (RecyclerView) v.findViewById(R.id.coursesrview);
-        CoursesAdapter coursesAdapter = new CoursesAdapter(getContext(),listcourses,"bloob");
+        CoursesAdapter coursesAdapter = new CoursesAdapter(getContext(),listcourses,user,1);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(coursesAdapter);
         return v;
