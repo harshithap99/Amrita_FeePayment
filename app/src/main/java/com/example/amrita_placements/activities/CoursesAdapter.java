@@ -23,31 +23,22 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
     Context mcontext;
     List<assigner> mdata;
     String user1;
-    int flag1;
 
-    public CoursesAdapter(Context ct, List<assigner> Mdata, String user, int flag)
+    public CoursesAdapter(Context ct, List<assigner> Mdata, String user)
     {
         mcontext = ct;
         mdata = Mdata;
         user1=user;
-        flag1=flag;
     }
     @NonNull
     @Override
     public MyViewHolder1 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mcontext);
-
-        if(flag1==1) {
-            View view = inflater.inflate(R.layout.courseitem, parent, false);
-            return new MyViewHolder1(view);
-        }
-        else{
-            View view = inflater.inflate(R.layout.regitem, parent, false);
-            return new MyViewHolder1(view);
-        }
+        View view =  inflater.inflate(R.layout.courseitem, parent, false);
 
 
 
+        return new MyViewHolder1(view);
     }
 
     @Override
