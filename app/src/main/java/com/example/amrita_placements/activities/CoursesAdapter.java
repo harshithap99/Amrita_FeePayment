@@ -37,7 +37,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
     public MyViewHolder1 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mcontext);
 
-        if(flag1==1) {
+        if(flag1==1) { //courses
             View view = inflater.inflate(R.layout.courseitem, parent, false);
             return new MyViewHolder1(view);
         }
@@ -55,18 +55,42 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
         holder.title.setText(mdata.get(position).getTitle());
         holder.des.setText(mdata.get(position).getDescription());
 
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mcontext, verification.class);
-               // intent.putExtra("docname", re[position]);
-                final Bundle bundle1 = new Bundle();
-                bundle1.putString("user1", user1);
-                intent.putExtras(bundle1);
 
-                mcontext.startActivity(intent);
-            }
-        });
+
+
+            holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent1 = new Intent(mcontext, Coursesfees.class);
+                    Intent intent = new Intent(mcontext, verification.class);
+
+                    if(flag1 == 1)
+                    {
+                        final Bundle bundle1 = new Bundle();
+                        bundle1.putString("user1", user1);
+                        bundle1.putString("title", mdata.get(position).getTitle());
+                        intent1.putExtras(bundle1);
+                        mcontext.startActivity(intent1);
+                    }
+                    else
+                    {
+                        final Bundle bundle1 = new Bundle();
+                        bundle1.putString("user1", user1);
+
+                        intent.putExtras(bundle1);
+                        mcontext.startActivity(intent);
+                    }
+
+                    // intent.putExtra("docname", re[position]);
+
+                }
+            });
+
+
+
+
+
     }
 
     @Override
