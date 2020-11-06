@@ -120,7 +120,7 @@ public class paypage extends AppCompatActivity {
                         new Uri.Builder()
                                 .scheme("upi")
                                 .authority("pay")
-                                .appendQueryParameter("pa", "")
+                                .appendQueryParameter("pa", "harshitharavi26@okicici")
                                 .appendQueryParameter("pn", "FeePay Amrita")
                                 //.appendQueryParameter("mc", "your-merchant-code")
                                 //.appendQueryParameter("tr", "your-transaction-ref-id")

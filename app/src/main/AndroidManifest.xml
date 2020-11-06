@@ -35,8 +35,6 @@
         <activity android:name=".activities.neftpage" />
         <activity android:name=".activities.NeftProcessing" />
         <activity android:name=".activities.bills" />
-        <activity android:name=".activities.Coursesfees" />
-
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
