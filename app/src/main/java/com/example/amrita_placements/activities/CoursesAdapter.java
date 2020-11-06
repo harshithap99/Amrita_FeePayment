@@ -23,14 +23,12 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
     Context mcontext;
     List<assigner> mdata;
     String user1;
-    int flag1;
 
-    public CoursesAdapter(Context ct, List<assigner> Mdata, String user, int flag)
+    public CoursesAdapter(Context ct, List<assigner> Mdata, String user)
     {
         mcontext = ct;
         mdata = Mdata;
         user1=user;
-        flag1=flag;
     }
     @NonNull
     @Override
@@ -48,6 +46,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.MyViewHo
 
 
 
+        return new MyViewHolder1(view);
     }
 
     @Override
