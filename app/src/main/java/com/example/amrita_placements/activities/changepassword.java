@@ -38,7 +38,8 @@ public class changepassword extends AppCompatActivity {
     EditText newpassword1;
     String pass;
     private FirebaseFirestore db;
-
+    FirebaseAuth fAuth;
+    final FirebaseUser this_user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class changepassword extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.change_passowrd);
         db = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
         findViews();
         changepassword = findViewById(R.id.changepassword);
         final Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);

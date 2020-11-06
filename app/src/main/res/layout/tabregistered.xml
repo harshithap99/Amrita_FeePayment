@@ -11,7 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:fontFamily="@font/archivo_black"
-        android:text="Here's the list of all registered events! :D"
+        android:text="Here's the list of all your registered events! :D"
         android:textColor="#939393"
         android:textSize="36sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/regrview"/>
+
 </LinearLayout>

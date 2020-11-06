@@ -37,6 +37,8 @@ public class profilepage extends AppCompatActivity {
     Button Change_password;
     Button View_receipts;
     private FirebaseFirestore db;
+    FirebaseAuth fAuth;
+    final FirebaseUser this_user = FirebaseAuth.getInstance().getCurrentUser();
     StorageReference gsReference;
 
     @Override
@@ -46,6 +48,7 @@ public class profilepage extends AppCompatActivity {
         setContentView(R.layout.profile_page);
         Change_password = findViewById(R.id.button);
         db = FirebaseFirestore.getInstance();
+        fAuth = FirebaseAuth.getInstance();
         View_receipts = findViewById(R.id.view_receipts);
 
         Bundle bundle = getIntent().getExtras();
