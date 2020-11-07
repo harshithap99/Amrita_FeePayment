@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-27dp"
-                android:fontFamily="@font/bowlby_one"
+                android:fontFamily="@font/carrois_gothic_sc"
                 android:gravity="center"
                 android:text="CHANGE PASSWORD"
                 android:textColor="#FFFFFF"
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="monospace"
                 android:gravity="center"
@@ -57,6 +57,24 @@
             android:layout_gravity="center"
             android:layout_marginBottom="40dp"
             android:background="#F853A8" />
+
+        <EditText
+            android:id="@+id/current_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shapeemail"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:hint="Current Password"
+            android:padding="15dp"
+            android:textColor="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/change_password"
@@ -95,38 +113,20 @@
             android:textColorHint="@android:color/black"
             android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/current_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="-10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/shapeemail"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:drawablePadding="10dp"
-            android:hint="Current Password"
-            android:padding="15dp"
-            android:textColor="@android:color/black"
-            android:textColorHighlight="@android:color/black"
-            android:textColorHint="@android:color/black"
-            android:textSize="14sp" />
-
         <Button
             android:id="@+id/changepassword"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="45dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="-30dp"
             android:background="@drawable/shapelogin"
             android:padding="0dp"
             android:shadowColor="@android:color/transparent"
             android:text="Change Password"
             android:textColor="#FFFFFF"
-            android:textSize="25sp" />
+            android:textSize="18sp" />
 
 
     </LinearLayout>

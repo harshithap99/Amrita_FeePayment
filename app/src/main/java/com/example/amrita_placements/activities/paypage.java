@@ -108,11 +108,24 @@ public class paypage extends AppCompatActivity {
         gpay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 int GOOGLE_PAY_REQUEST_CODE = 123;
 
                 Bundle bundle = getIntent().getExtras();
 
-                final String amount = bundle.getString("amount");
+                final String jk = bundle.getString("iscourse");
+                String amount;
+                if(jk!=null)
+                {
+                     amount = bundle.getString("amount");
+
+                }
+                else
+                {
+                     amount = bundle.getString("iscourse");
+
+                }
 
                 Toast.makeText(getApplicationContext(), "heereee", Toast.LENGTH_SHORT).show();
 
@@ -120,7 +133,7 @@ public class paypage extends AppCompatActivity {
                         new Uri.Builder()
                                 .scheme("upi")
                                 .authority("pay")
-                                .appendQueryParameter("pa", "")
+                                .appendQueryParameter("pa", "harshitharavi26@okicici")
                                 .appendQueryParameter("pn", "FeePay Amrita")
                                 //.appendQueryParameter("mc", "your-merchant-code")
                                 //.appendQueryParameter("tr", "your-transaction-ref-id")
@@ -148,53 +161,121 @@ public class paypage extends AppCompatActivity {
         assert bundle != null;
         final String user1 = bundle.getString("user1");
         final String whatfees = bundle.getString("whatfees");
+        final String jk = bundle.getString("iscourse");
 
-        DocumentReference reference = db.collection("students").document(user1);
-        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful())
-                {
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    if (documentSnapshot.exists()) {
-                        String sname,phonenumber,amount,email;
-                        Date currentTime = Calendar.getInstance().getTime();
-                        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        if(jk==null)
+        {
 
-                        sname = documentSnapshot.getString("name");
-                        phonenumber = documentSnapshot.get("phonenumber").toString();
-                        assert whatfees != null;
-                        amount = documentSnapshot.get(whatfees).toString();
-                        email = documentSnapshot.getString("email");
-                        Map<String, Object> data = new HashMap<>();
-                          data.put("Student_name", sname);
-                          data.put("Student_reg", user1);
-                          data.put("acc_name", accountname);
-                          data.put("acc_number", accountnumber);
-                          data.put("amt", amount);
-                          data.put("mobile", phonenumber);
-                          data.put("emailid", email);
-                          data.put("fee_type", whatfees);
-                          data.put("paytype", "mobile payment");
-                          data.put("date", currentTime.toString());
 
-                        Map<String, Object> data1 = new HashMap<>();
-                        data1.put(whatfees, 0);
-                        db.collection("students").document(user1).collection("reciepts").document(whatfees+currentDate)
-                         .set(data);
+            DocumentReference reference = db.collection("students").document(user1);
 
-                        db.collection("students").document(user1)
-                                .set(data1, SetOptions.merge());
 
-                    } else {
-                        Toast.makeText(getApplicationContext(), "didnt find the doc in firebase", Toast.LENGTH_SHORT).show();
+            reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful())
+                    {
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        if (documentSnapshot.exists()) {
+
+                            String sname,phonenumber,amount,email;
+                            Date currentTime = Calendar.getInstance().getTime();
+                            String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
+                            sname = documentSnapshot.getString("name");
+                            phonenumber = documentSnapshot.get("phonenumber").toString();
+                            assert whatfees != null;
+                            amount = documentSnapshot.get(whatfees).toString();
+                            email = documentSnapshot.getString("email");
+                            Map<String, Object> data = new HashMap<>();
+                            data.put("Student_name", sname);
+                            data.put("Student_reg", user1);
+                            data.put("acc_name", accountname);
+                            data.put("acc_number", accountnumber);
+                            data.put("amt", amount);
+                            data.put("mobile", phonenumber);
+                            data.put("emailid", email);
+                            data.put("fee_type", whatfees);
+                            data.put("paytype", "mobile payment");
+                            data.put("date", currentTime.toString());
+
+                            Map<String, Object> data1 = new HashMap<>();
+                            data1.put(whatfees, 0);
+                            db.collection("students").document(user1).collection("reciepts").document(whatfees+currentDate)
+                                    .set(data);
+
+                            db.collection("students").document(user1)
+                                    .set(data1, SetOptions.merge());
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "didnt find the doc in firebase", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
-                else{
-                    Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+            });
+        }
+
+
+        else
+        {
+
+
+            DocumentReference reference = db.collection("students").document(user1);
+
+
+            reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful())
+                    {
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        if (documentSnapshot.exists()) {
+                            String sname,phonenumber,amount,email;
+                            Date currentTime = Calendar.getInstance().getTime();
+                            String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
+                            sname = documentSnapshot.getString("name");
+                            phonenumber = documentSnapshot.get("phonenumber").toString();
+                            assert whatfees != null;
+                            amount = jk;
+                            email = documentSnapshot.getString("email");
+                            Map<String, Object> data = new HashMap<>();
+                            data.put("Student_name", sname);
+                            data.put("Student_reg", user1);
+                            data.put("acc_name", accountname);
+                            data.put("acc_number", accountnumber);
+                            data.put("amt", amount);
+                            data.put("mobile", phonenumber);
+                            data.put("emailid", email);
+                            data.put("fee_type", whatfees);
+                            data.put("paytype", "mobile payment");
+                            data.put("date", currentTime.toString());
+
+
+                            db.collection("students").document(user1).collection("reciepts").document(whatfees+currentDate)
+                                    .set(data);
+                            Map<String, Object> data1 = new HashMap<>();
+                            data1.put("short", "Registered and booked");
+                            
+                            db.collection("students").document(user1).collection("workshops").document(whatfees).set(data1);
+
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "didnt find the doc in firebase", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+
+
+        }
+
 
 
 
@@ -214,6 +295,8 @@ public class paypage extends AppCompatActivity {
             }
         });
     }
+
+
     public void findViews()
     {
         account_number = findViewById(R.id.account_number);

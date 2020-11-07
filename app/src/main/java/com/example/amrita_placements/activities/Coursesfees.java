@@ -36,7 +36,7 @@ public class Coursesfees extends AppCompatActivity {
     int flag = 0;
     private FirebaseFirestore db;
     FirebaseAuth fAuth;
-
+    String amt,fee;
 
 
     @Override
@@ -67,6 +67,8 @@ public class Coursesfees extends AppCompatActivity {
         final Button formid = (Button) findViewById(R.id.form_id);
         final Button payid = (Button) findViewById(R.id.pay_id);
         final Button backid = (Button) findViewById(R.id.form_id2);
+        formid.setVisibility(View.INVISIBLE);
+
 
 
 
@@ -83,7 +85,6 @@ public class Coursesfees extends AppCompatActivity {
 
                                 if(document.getId().toString().equals(Title)) {
                                     flag =1;
-
                                 }
 
                             }
@@ -92,10 +93,34 @@ public class Coursesfees extends AppCompatActivity {
                             backid.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
+                                    onBackPressed();
+                                }
+                            });
+
+
+                            formid.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
                                     Intent intent = new Intent(Coursesfees.this, courses.class);
 
                                     final Bundle bundle1 = new Bundle();
                                     bundle1.putString("user1", user1);
+
+                                    intent.putExtras(bundle1);
+                                    Coursesfees.this.startActivity(intent);
+
+                                }
+                            });
+
+                            payid.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(Coursesfees.this, paypage.class);
+
+                                    final Bundle bundle1 = new Bundle();
+                                    bundle1.putString("user1", user1);
+                                    bundle1.putString("whatfees", Title);
+                                    bundle1.putString("iscourse", fee);
 
                                     intent.putExtras(bundle1);
                                     Coursesfees.this.startActivity(intent);
@@ -122,7 +147,14 @@ public class Coursesfees extends AppCompatActivity {
                             }
                             else
                             {
-
+                                db.collection("WORKSHOPS").document("CSE").collection("workshops").document(Title).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        DocumentSnapshot documentSnapshot = task.getResult();
+                                        fee = documentSnapshot.getString("fee");
+                                        amont.setText(fee);
+                                    }
+                                });
                             }
 
 

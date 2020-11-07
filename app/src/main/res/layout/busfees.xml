@@ -36,7 +36,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="Balance:"
+        android:text="Balance in rupees:"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +45,8 @@
     <Button
         android:id="@+id/pay_id"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/shapelogin"
         android:padding="0dp"
         android:shadowColor="@android:color/transparent"
@@ -55,14 +55,12 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.975"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/form_id" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/form_id"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_marginTop="523dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/shapelogin"
@@ -174,7 +172,7 @@
         android:id="@+id/AMT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/amaranth"
+        android:fontFamily="@font/carrois_gothic_sc"
         android:text="Loading.."
         android:textColor="#96E600"
         android:textSize="76sp"

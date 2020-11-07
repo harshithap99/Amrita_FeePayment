@@ -17,12 +17,13 @@
         android:shadowColor="@android:color/transparent"
         android:text="View Receipts"
         android:textColor="#FFFFFF"
-        android:textSize="25sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -50,44 +51,36 @@
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="265dp"
-                android:layout_height="265dp"
+                android:layout_width="205dp"
+                android:layout_height="205dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="65dp"
                 app:cardBackgroundColor="#9AFFBCDE"
                 app:cardCornerRadius="350dp">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="245dp"
-                    android:layout_height="245dp"
+                    android:layout_width="185dp"
+                    android:layout_height="185dp"
                     android:layout_gravity="center"
                     app:cardBackgroundColor="#E1FF6FB9"
                     app:cardCornerRadius="350dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="215dp"
-                        android:layout_height="215dp"
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
                         android:layout_gravity="center"
-                        app:cardBackgroundColor="#F853A8"
                         app:cardCornerRadius="350dp">
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:layout_gravity="center"
-                            app:cardCornerRadius="350dp">
-
-                            <ImageView
-                                android:id="@+id/propic"
-                                android:layout_width="200dp"
-                                android:layout_height="200dp"
-                                android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/ic_search_black_24dp" />
-
-                        </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/propic"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/ic_search_black_24dp" />
 
                     </androidx.cardview.widget.CardView>
+
 
                 </androidx.cardview.widget.CardView>
             </androidx.cardview.widget.CardView>
@@ -98,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:fontFamily="@font/asap"
+                android:fontFamily="@font/carrois_gothic_sc"
                 android:gravity="center"
                 android:text="Harshitha R"
                 android:textColor="#FFFFFF"
@@ -108,7 +101,7 @@
                 android:id="@+id/reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/asap"
+                android:fontFamily="@font/carrois_gothic_sc"
                 android:gravity="center"
                 android:text="BL.EN.U4CSE17045"
                 android:textColor="#FFFFFF"
@@ -118,10 +111,31 @@
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/asap"
+                android:fontFamily="@font/carrois_gothic_sc"
                 android:gravity="center"
                 android:text="Day Scholar"
                 android:textColor="#2196F3"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/reg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/asap"
+                android:gravity="center"
+                android:text="2017-2020"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/reg3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/asap"
+                android:gravity="center"
+                android:text="Bangalore"
+                android:textColor="#FFFFFF"
                 android:textSize="30sp" />
 
             <TextView
@@ -130,9 +144,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/asap"
                 android:gravity="center"
+                android:padding="20dp"
                 android:text="achooli123@gmail.com"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp" />
+                android:textSize="14sp" />
 
 
         </LinearLayout>
@@ -143,15 +158,16 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/shapelogin"
         android:padding="0dp"
         android:shadowColor="@android:color/transparent"
         android:text="Change password"
         android:textColor="#FFFFFF"
-        android:textSize="25sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         app:layout_constraintVertical_bias="0.0" />

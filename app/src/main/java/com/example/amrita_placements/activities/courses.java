@@ -99,7 +99,6 @@ public class courses extends AppCompatActivity {
                                                 }
 
 
-                                                listcourses1.add(new assigner("AMAZON","Amazon workshop"));
 
 
 
