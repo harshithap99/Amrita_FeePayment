@@ -1,6 +1,7 @@
 package com.example.amrita_placements.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -35,7 +36,7 @@ public class libraryfines extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.hostelfees);
+        setContentView(R.layout.library_dues);
         db = FirebaseFirestore.getInstance();
         formid = findViewById(R.id.form_id);
         payid = findViewById(R.id.pay_id);
@@ -53,11 +54,12 @@ public class libraryfines extends AppCompatActivity {
                     if (documentSnapshot.exists()) {
                         String amount = "not got";
                         long amount_int;
-                        amount = documentSnapshot.get("HOSTELFEES").toString();
-                        amount_int = (long) documentSnapshot.get("HOSTELFEES");
+                        amount = documentSnapshot.get("LIBFEES").toString();
+                        amount_int = (long) documentSnapshot.get("LIBFEES");
                         if(amount_int>0)
                         {
                             flag=1;
+                            AMT.setTextColor(Color.parseColor("#FFFFFF"));
                         }
                         AMT.setText(amount);
 
@@ -84,7 +86,10 @@ public class libraryfines extends AppCompatActivity {
         payid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                go_to_payment();
+                if(flag==1)
+                    go_to_payment();
+                else
+                    Toast.makeText(getApplicationContext(), "No dues to be cleared", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -95,7 +100,7 @@ public class libraryfines extends AppCompatActivity {
         String user1 = bundle.getString("user1");
         Bundle bundle1 = new Bundle();
         bundle1.putString("user1", user1);
-
+        bundle1.putString("type", "LIBFEES");
 
         Intent intent = new Intent(this, formpage.class);
         intent.putExtras(bundle1);
@@ -114,7 +119,7 @@ public class libraryfines extends AppCompatActivity {
         String user1 = bundle.getString("user1");
         Bundle bundle1 = new Bundle();
         bundle1.putString("user1", user1);
-        bundle1.putString("whatfees", "HOSTELFEES");
+        bundle1.putString("whatfees", "LIBFEES");
         bundle1.putString("amount", AMT.getText().toString());
 
 

@@ -214,11 +214,54 @@ public class verification extends AppCompatActivity {
 
 
     }
+
+
     public void go_to_messfees()
     {
-        Intent intent = new Intent(this, messfees.class);
-        startActivity(intent);
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        final String user1 = bundle.getString("user1");
+        db = FirebaseFirestore.getInstance();
+
+
+        assert user1 != null;
+        Toast.makeText(getApplicationContext(), user1, Toast.LENGTH_SHORT).show();
+        DocumentReference reference = db.collection("students").document(user1);
+        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful())
+                {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        boolean flagforneft = false;
+                        flagforneft = (boolean) documentSnapshot.get("MESSFEESneftflag");
+                        if(flagforneft)
+                        {
+                            go_to_processing("MESSFEES");
+                        }
+                        else
+                        {
+
+                            Intent intent = new Intent(verification.this, messfees.class);
+                            final Bundle bundle1 = new Bundle();
+                            bundle1.putString("user1", user1);
+                            intent.putExtras(bundle1);
+                            startActivity(intent);
+
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "didnt find the doc in firebase", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
+
     public void go_to_tutionfees()
     {
         Bundle bundle = getIntent().getExtras();
@@ -396,9 +439,50 @@ public class verification extends AppCompatActivity {
 
     public void go_to_libraryfines()
     {
-        Intent intent = new Intent(this, libraryfines.class);
-        startActivity(intent);
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        final String user1 = bundle.getString("user1");
+        db = FirebaseFirestore.getInstance();
+
+
+        assert user1 != null;
+        Toast.makeText(getApplicationContext(), user1, Toast.LENGTH_SHORT).show();
+        DocumentReference reference = db.collection("students").document(user1);
+        reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful())
+                {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        boolean flagforneft = false;
+                        flagforneft = (boolean) documentSnapshot.get("LIBFEESneftflag");
+                        if(flagforneft)
+                        {
+                            go_to_processing("LIBFEES");
+                        }
+                        else
+                        {
+
+                            Intent intent = new Intent(verification.this, libraryfines.class);
+                            final Bundle bundle1 = new Bundle();
+                            bundle1.putString("user1", user1);
+                            intent.putExtras(bundle1);
+                            startActivity(intent);
+
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "didnt find the doc in firebase", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
+
     public void go_to_otherfees()
     {
         Bundle bundle = getIntent().getExtras();

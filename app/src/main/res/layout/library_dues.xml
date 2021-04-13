@@ -36,7 +36,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="20dp"
-        android:text="Balance:"
+        android:text="Balance in rupees:"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +45,7 @@
     <Button
         android:id="@+id/pay_id"
         android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/shapelogin"
         android:padding="0dp"
@@ -63,24 +62,28 @@
     <Button
         android:id="@+id/form_id"
         android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:layout_marginBottom="100dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="523dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/shapelogin"
         android:padding="0dp"
         android:shadowColor="@android:color/transparent"
         android:text="FORM"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/pay_id"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="357dp"
         android:text="Already paid through a bank? "
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/form_id"
@@ -93,7 +96,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="357dp"
         android:text="Fill the"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/form_id"
@@ -106,7 +109,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="357dp"
         android:text="NEFT"
         android:textColor="#F853A8"
         app:layout_constraintBottom_toTopOf="@+id/form_id"
@@ -124,15 +127,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/balance" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="268dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
         android:text="Want to make a bank transfer?"
         android:textColor="#FFFFFF"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -166,5 +169,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/AMT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/carrois_gothic_sc"
+        android:text="Loading.."
+        android:textColor="#96E600"
+        android:textSize="76sp"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/balance"
+        app:layout_constraintVertical_bias="0.432" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

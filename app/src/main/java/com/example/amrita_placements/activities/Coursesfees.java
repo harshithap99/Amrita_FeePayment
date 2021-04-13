@@ -36,7 +36,7 @@ public class Coursesfees extends AppCompatActivity {
     int flag = 0;
     private FirebaseFirestore db;
     FirebaseAuth fAuth;
-    String amt,fee;
+    String amt,fee,srt;
 
 
     @Override
@@ -147,12 +147,20 @@ public class Coursesfees extends AppCompatActivity {
                             }
                             else
                             {
+                                t2.setVisibility(View.INVISIBLE);
+                                t3.setVisibility(View.INVISIBLE);
+                                t4.setVisibility(View.INVISIBLE);
+                                t5.setVisibility(View.INVISIBLE);
+                                t6.setVisibility(View.INVISIBLE);
                                 db.collection("WORKSHOPS").document("CSE").collection("workshops").document(Title).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                         DocumentSnapshot documentSnapshot = task.getResult();
                                         fee = documentSnapshot.getString("fee");
+                                        srt = documentSnapshot.getString("short");
+                                        t1.setText(srt);
                                         amont.setText(fee);
+                                        amont.setTextColor(Color.WHITE);
                                     }
                                 });
                             }

@@ -112,7 +112,7 @@
             android:shadowColor="@android:color/transparent"
             android:text="Log In"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:visibility="invisible" />
 
 
@@ -129,7 +129,7 @@
 
         android:gravity="center_horizontal"
         android:padding="4dp"
-        android:text="Forgot Password?"
+        android:text="Forgot Password? Contact ICTS"
         android:textColor="#8E8D8D"
         android:textSize="18sp" />
 
